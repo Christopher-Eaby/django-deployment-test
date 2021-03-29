@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "site1_app/base.html" %}
+{% block body_block %}
+    <br>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="big">Sign up here.</h1>
+                <br>
+                {% if registered %}
+                    <h1>Thank you for registering.</h1>
+
+                {% else %}
+                    <h1>Register here:</h1>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            {{ user_form.as_p }}
+                            {{ profile_form.as_p }}
+                            <br>
+                            <input class="btn btn-outline-danger" type="submit" value="Sign Up">
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
